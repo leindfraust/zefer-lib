@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { tiptapText } from "../src/app/index";
+import { getText } from "../src/lib/getText";
 test("should return a string", () => {
     const contentJson = {
         type: "doc",
@@ -26,6 +26,6 @@ test("should return a string", () => {
             },
         ],
     };
-    const text = tiptapText(contentJson);
+    const text = getText(contentJson);
     expect(text).toEqual("Example Text");
 });

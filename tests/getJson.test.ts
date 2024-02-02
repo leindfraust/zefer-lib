@@ -1,4 +1,4 @@
-import { tiptapHtml } from "../src/app/index";
+import { getJson } from "../src/lib/getJson";
 
 const contentJson = {
     type: "doc",
@@ -25,7 +25,7 @@ const contentJson = {
 };
 const contentHtml = "<p>Example <strong>Text</strong></p>";
 
-test("should return an HTML string", () => {
-    const html = tiptapHtml(contentJson);
-    expect(html).toEqual(contentHtml);
+test("should return a JSON", () => {
+    const json = getJson(contentHtml);
+    expect(json).toEqual(contentJson);
 });

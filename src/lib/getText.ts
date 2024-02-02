@@ -1,4 +1,4 @@
-import { Editor } from "@tiptap/core";
+import { Editor, generateHTML } from "@tiptap/core";
 import jsdom from "jsdom";
 import TaskList from "@tiptap/extension-task-list";
 import TaskItem from "@tiptap/extension-task-item";
@@ -8,9 +8,7 @@ import Image from "@tiptap/extension-image";
 import Link from "@tiptap/extension-link";
 import Youtube from "@tiptap/extension-youtube";
 import CharacterCount from "@tiptap/extension-character-count";
-import type { JSONContent } from "../types.d.ts";
-import { tiptapHtml } from "./tiptapHtml";
-
+import type { JSONContent } from "../types.js";
 const { JSDOM } = jsdom;
 const dom = new JSDOM(
     '<!DOCTYPE html><html><body><div class"element"></div></body></html>',
@@ -24,7 +22,7 @@ const element = doc.querySelector(".element")!;
  * @returns {string} returns plain text
  */
 
-const tiptapText = (content: JSONContent): string => {
+const getText = (content: JSONContent): string => {
     const editor = new Editor({
         element: element,
         extensions: [
@@ -37,9 +35,18 @@ const tiptapText = (content: JSONContent): string => {
             Youtube,
             CharacterCount,
         ],
-        content: tiptapHtml(content),
+        content: generateHTML(content, [
+            TaskList,
+            TaskItem,
+            HighLight,
+            StarterKit,
+            Image,
+            Link,
+            Youtube,
+            CharacterCount,
+        ]),
     });
     return editor.getText();
 };
 
-export { tiptapText };
+export { getText };

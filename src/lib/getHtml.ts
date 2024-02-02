@@ -7,7 +7,7 @@ import Image from "@tiptap/extension-image";
 import Link from "@tiptap/extension-link";
 import Youtube from "@tiptap/extension-youtube";
 import CharacterCount from "@tiptap/extension-character-count";
-import type { JSONContent } from "../types.d.ts";
+import type { JSONContent } from "../types.js";
 
 /**
  * Description
@@ -15,7 +15,7 @@ import type { JSONContent } from "../types.d.ts";
  * @returns {any} returns HTML
  */
 
-const tiptapHtml = (content: JSONContent): string => {
+const getHtml = (content: JSONContent): string => {
     const html = generateHTML(content, [
         TaskList,
         TaskItem,
@@ -29,4 +29,4 @@ const tiptapHtml = (content: JSONContent): string => {
     return html;
 };
 
-export { tiptapHtml };
+export { getHtml };
