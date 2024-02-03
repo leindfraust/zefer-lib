@@ -17,7 +17,7 @@ const doc = dom.window.document;
 const element = doc.querySelector(".element")!;
 
 /**
- * Description
+ * Converts `content` to a plain text
  * @param {JSONContent} content The content body of the blog post e.g. response?.content
  * @returns {string} returns plain text
  */

@@ -10,7 +10,7 @@ import CharacterCount from "@tiptap/extension-character-count";
 import type { JSONContent } from "../types.js";
 
 /**
- * Description
+ * Converts `content` to JSON if it's HTML
  * @param {string} content The HTML of the content
  * @returns {JSONContent} returns JSONContent
  */

@@ -10,3 +10,10 @@ export declare type JSONContent = {
     text?: string;
     [key: string]: any;
 };
+
+export declare type PostsOptions = {
+    q?: string;
+    cursor?: string;
+    limit?: number;
+    orderBy?: "most-popular" | "latest";
+};
