@@ -17,3 +17,18 @@ export declare type PostsOptions = {
     limit?: number;
     orderBy?: "most-popular" | "latest";
 };
+
+export declare type Post = {
+    id: string;
+    title: string;
+    titleId: string;
+    description: string;
+    userId: string;
+    author: string;
+    authorUsername: string;
+    authorImage: string;
+    content: JSONContent[];
+    published: boolean;
+    createdAt: Date;
+    updatedAt: Date;
+};

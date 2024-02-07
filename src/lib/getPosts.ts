@@ -1,13 +1,16 @@
-import type { PostsOptions } from "../types";
+import type { PostsOptions, Post } from "../types";
 
 /**
  * Retrieves posts from the server.
  * @async
  * @param {PostsOptions} options - The options for retrieving posts.
  * @param {string} token - Your API Key.
- * @returns {Promise<any>} - A promise that resolves to the retrieved posts.
+ * @returns {Promise<Post[]>} - A promise that resolves to the retrieved posts.
  */
-const getPosts = async (options: PostsOptions, token: string): Promise<any> => {
+const getPosts = async (
+    options: PostsOptions,
+    token: string,
+): Promise<Post[]> => {
     /**
      * @typedef {Object} PostsOptions - The options for retrieving posts.
      * @property {string} q - The search query.
@@ -17,10 +20,18 @@ const getPosts = async (options: PostsOptions, token: string): Promise<any> => {
      */
 
     const params = new URLSearchParams({
-        q: options.q as any,
-        cursor: options.cursor as any,
-        limit: options.limit as any,
-        orderBy: options.orderBy as any,
+        ...(options.q && {
+            q: options.q,
+        }),
+        ...(options.cursor && {
+            cursor: options.cursor,
+        }),
+        ...(options.limit && {
+            limit: options.limit.toString(),
+        }),
+        ...(options.orderBy && {
+            orderBy: options.orderBy,
+        }),
     });
 
     const response = await fetch(
@@ -33,7 +44,7 @@ const getPosts = async (options: PostsOptions, token: string): Promise<any> => {
     );
 
     const posts = await response.json();
-    return posts;
+    return posts as Post[];
 };
 
 export { getPosts };
