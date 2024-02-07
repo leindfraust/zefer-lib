@@ -27,6 +27,7 @@ export declare type Post = {
     author: string;
     authorUsername: string;
     authorImage: string;
+    coverImage: string;
     content: JSONContent[];
     published: boolean;
     createdAt: Date;
