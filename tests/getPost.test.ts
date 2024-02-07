@@ -25,7 +25,7 @@ describe("getPost", () => {
         await getPost(id, token);
 
         expect(fetch).toHaveBeenCalledWith(
-            "https://zefer-api.onrender.com/post/123",
+            "https://zefer-api.onrender.com/posts/123",
             {
                 headers: {
                     Authorization: "Bearer your-api-token",
