@@ -28,7 +28,7 @@ describe("getPosts", () => {
         };
         const token = "your-api-token";
 
-        await getPosts(options, token);
+        await getPosts(token, options);
 
         expect(fetch).toHaveBeenCalledWith(
             "https://zefer-api.onrender.com/posts?q=search&cursor=cursor&limit=10&orderBy=latest",
@@ -49,7 +49,7 @@ describe("getPosts", () => {
         };
         const token = "your-api-token";
 
-        const result = await getPosts(options, token);
+        const result = await getPosts(token, options);
 
         expect(result).toEqual(mockResponse);
     });

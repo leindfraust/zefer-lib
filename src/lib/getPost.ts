@@ -7,7 +7,7 @@ import type { Post } from "../types";
  * @param {string} token - Your API key.
  * @returns {Promise<Post>} - A promise that resolves to the retrieved blog post.
  */
-const getPost = async (id: string, token: string): Promise<Post> => {
+const getPost = async (token: string, id: string): Promise<Post> => {
     const response = await fetch(`https://zefer-api.onrender.com/posts/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`,

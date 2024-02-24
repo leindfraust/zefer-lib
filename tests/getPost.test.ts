@@ -22,7 +22,7 @@ describe("getPost", () => {
         const id = "123";
         const token = "your-api-token";
 
-        await getPost(id, token);
+        await getPost(token, id);
 
         expect(fetch).toHaveBeenCalledWith(
             "https://zefer-api.onrender.com/posts/123",
@@ -38,7 +38,7 @@ describe("getPost", () => {
         const id = "123";
         const token = "your-api-token";
 
-        const result = await getPost(id, token);
+        const result = await getPost(token, id);
 
         expect(result).toEqual(mockResponse);
     });

@@ -8,8 +8,8 @@ import type { PostsOptions, Post } from "../types";
  * @returns {Promise<Post[]>} - A promise that resolves to the retrieved posts.
  */
 const getPosts = async (
-    options: PostsOptions,
     token: string,
+    options?: PostsOptions,
 ): Promise<Post[]> => {
     /**
      * @typedef {Object} PostsOptions - The options for retrieving posts.
@@ -20,18 +20,22 @@ const getPosts = async (
      */
 
     const params = new URLSearchParams({
-        ...(options.q && {
-            q: options.q,
-        }),
-        ...(options.cursor && {
-            cursor: options.cursor,
-        }),
-        ...(options.limit && {
-            limit: options.limit.toString(),
-        }),
-        ...(options.orderBy && {
-            orderBy: options.orderBy,
-        }),
+        ...(options &&
+            options.q && {
+                q: options.q,
+            }),
+        ...(options &&
+            options.cursor && {
+                cursor: options.cursor,
+            }),
+        ...(options &&
+            options.limit && {
+                limit: options.limit.toString(),
+            }),
+        ...(options &&
+            options.orderBy && {
+                orderBy: options.orderBy,
+            }),
     });
 
     const response = await fetch(
