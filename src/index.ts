@@ -4,12 +4,10 @@ import { getText } from "./lib/getText";
 import { getPost } from "./lib/getPost";
 import { getPosts } from "./lib/getPosts";
 
-const zefer = {
+export const zefer = {
     getHtml,
     getJson,
     getText,
     getPost,
     getPosts,
 };
-
-export default zefer;
