@@ -3,8 +3,8 @@ import type { PostsOptions, Post } from "../types";
 /**
  * Retrieves posts from the server.
  * @async
- * @param {PostsOptions} options - The options for retrieving posts.
  * @param {string} token - Your API Key.
+ * @param {PostsOptions} options - The options for retrieving posts.
  * @returns {Promise<Post[]>} - A promise that resolves to the retrieved posts.
  */
 const getPosts = async (
