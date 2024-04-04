@@ -18,7 +18,7 @@ const getPosts = async (
      * @property {string} cursor - The cursor for pagination.
      * @property {number} limit - The maximum number of posts to retrieve.
      * @property {string} orderBy - The field to order the posts by.
-     * @property {string} series - The series the posts belong to.
+     * @property {string} seriesId  - The series ID that the posts will belong to.
      */
 
     const params = new URLSearchParams({
@@ -39,8 +39,8 @@ const getPosts = async (
                 orderBy: options.orderBy,
             }),
         ...(options &&
-            options.series && {
-                series: options.series,
+            options.seriesId && {
+                seriesId: options.seriesId,
             }),
     });
 

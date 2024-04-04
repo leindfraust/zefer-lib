@@ -26,14 +26,14 @@ describe("getPosts", () => {
             cursor: "cursor",
             limit: 10,
             orderBy: "latest",
-            series: "series",
+            seriesId: "series",
         };
         const token = "your-api-token";
 
         await getPosts(token, options);
 
         expect(fetch).toHaveBeenCalledWith(
-            `${getApiBaseUrl}/posts?q=search&cursor=cursor&limit=10&orderBy=latest&series=series`,
+            `${getApiBaseUrl}/posts?q=search&cursor=cursor&limit=10&orderBy=latest&seriesId=series`,
             {
                 headers: {
                     Authorization: "Bearer your-api-token",
@@ -48,7 +48,7 @@ describe("getPosts", () => {
             cursor: "cursor",
             limit: 10,
             orderBy: "latest",
-            series: "series",
+            seriesId: "series",
         };
         const token = "your-api-token";
 
