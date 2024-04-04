@@ -1,6 +1,7 @@
 import { getPosts } from "../src/lib/getPosts";
 import { PostsOptions } from "../src/types";
 import { jest } from "@jest/globals";
+import getApiBaseUrl from "../src/utils/getApiBaseUrl";
 
 describe("getPosts", () => {
     const mockResponse = { data: "mocked data" };
@@ -25,13 +26,14 @@ describe("getPosts", () => {
             cursor: "cursor",
             limit: 10,
             orderBy: "latest",
+            series: "series",
         };
         const token = "your-api-token";
 
         await getPosts(token, options);
 
         expect(fetch).toHaveBeenCalledWith(
-            "https://zefer-api.onrender.com/posts?q=search&cursor=cursor&limit=10&orderBy=latest",
+            `${getApiBaseUrl}/posts?q=search&cursor=cursor&limit=10&orderBy=latest&series=series`,
             {
                 headers: {
                     Authorization: "Bearer your-api-token",
@@ -46,6 +48,7 @@ describe("getPosts", () => {
             cursor: "cursor",
             limit: 10,
             orderBy: "latest",
+            series: "series",
         };
         const token = "your-api-token";
 

@@ -1,5 +1,6 @@
 import { getPost } from "../src/lib/getPost";
 import { jest } from "@jest/globals";
+import getApiBaseUrl from "../src/utils/getApiBaseUrl";
 
 describe("getPost", () => {
     const mockResponse = { data: "mocked data" };
@@ -24,14 +25,11 @@ describe("getPost", () => {
 
         await getPost(token, id);
 
-        expect(fetch).toHaveBeenCalledWith(
-            "https://zefer-api.onrender.com/posts/123",
-            {
-                headers: {
-                    Authorization: "Bearer your-api-token",
-                },
+        expect(fetch).toHaveBeenCalledWith(`${getApiBaseUrl}/posts/123`, {
+            headers: {
+                Authorization: "Bearer your-api-token",
             },
-        );
+        });
     });
 
     it("should return the fetched post", async () => {
