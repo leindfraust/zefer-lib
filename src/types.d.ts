@@ -16,6 +16,7 @@ export declare type PostsOptions = {
     cursor?: string;
     limit?: number;
     orderBy?: "most-popular" | "latest";
+    series?: string;
 };
 
 export declare type Post = {

@@ -1,4 +1,5 @@
 import type { PostsOptions, Post } from "../types";
+import getApiBaseUrl from "../utils/getApiBaseUrl";
 
 /**
  * Retrieves posts from the server.
@@ -17,6 +18,7 @@ const getPosts = async (
      * @property {string} cursor - The cursor for pagination.
      * @property {number} limit - The maximum number of posts to retrieve.
      * @property {string} orderBy - The field to order the posts by.
+     * @property {string} series - The series the posts belong to.
      */
 
     const params = new URLSearchParams({
@@ -36,16 +38,17 @@ const getPosts = async (
             options.orderBy && {
                 orderBy: options.orderBy,
             }),
+        ...(options &&
+            options.series && {
+                series: options.series,
+            }),
     });
 
-    const response = await fetch(
-        `https://zefer-api.onrender.com/posts?${params}`,
-        {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
+    const response = await fetch(`${getApiBaseUrl}/posts?${params}`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
         },
-    );
+    });
 
     const posts = await response.json();
     return posts as Post[];

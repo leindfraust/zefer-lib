@@ -1,4 +1,5 @@
 import type { Post } from "../types";
+import getApiBaseUrl from "../utils/getApiBaseUrl";
 
 /**
  * Retrieves a single blog post from the server.
@@ -8,7 +9,7 @@ import type { Post } from "../types";
  * @returns {Promise<Post>} - A promise that resolves to the retrieved blog post.
  */
 const getPost = async (token: string, id: string): Promise<Post> => {
-    const response = await fetch(`https://zefer-api.onrender.com/posts/${id}`, {
+    const response = await fetch(`${getApiBaseUrl}/posts/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
