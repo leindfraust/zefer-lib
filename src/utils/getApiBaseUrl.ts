@@ -1,1 +1,1 @@
-export default "https://zefer-api.onrender.com";
+export default "https://api.zefer.blog";
